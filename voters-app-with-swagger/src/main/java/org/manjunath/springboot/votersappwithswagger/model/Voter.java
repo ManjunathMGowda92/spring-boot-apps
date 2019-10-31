@@ -2,10 +2,15 @@ package org.manjunath.springboot.votersappwithswagger.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name ="voter")
 public class Voter implements Serializable {
 	/**
 	 * 
@@ -13,13 +18,27 @@ public class Voter implements Serializable {
 	private static final long serialVersionUID = 3184932883727729011L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int id;
+	
+	@Column(name = "VOTERID")
 	private String voterId;
+	
+	@Column(name = "FIRSTNAME")
 	private String firstName;
+	
+	@Column(name = "LASTNAME")
 	private String lastName;
+	
+	@Column(name = "FATHERNAME")
 	private String fatherName;
+	
+	@Column(name = "HUSBANDNAME")
 	private String husbandName;
+	
+	@Column(name = "DATE_OF_BIRTH")
 	private String dob;
+	
 	private VoterAddress address;
 	
 	public Voter() {}

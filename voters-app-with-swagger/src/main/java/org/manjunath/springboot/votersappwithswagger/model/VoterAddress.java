@@ -2,6 +2,9 @@ package org.manjunath.springboot.votersappwithswagger.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class VoterAddress implements Serializable{
 	/**
 	 * 
