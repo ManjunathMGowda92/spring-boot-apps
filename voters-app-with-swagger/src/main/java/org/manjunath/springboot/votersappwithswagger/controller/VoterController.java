@@ -7,6 +7,8 @@ import org.manjunath.springboot.votersappwithswagger.service.VoterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,5 +32,11 @@ public class VoterController {
 	@GetMapping("/voters/voter/{voterId}")
 	public Voter getVoterByVoterId(@PathVariable String voterId) {
 		return null;
+	}
+	
+	@PostMapping("/voters")
+	public Voter addVoter(@RequestBody Voter voter) {
+		voter.setId(0);
+		return service.addVoter(voter);
 	}
 }
