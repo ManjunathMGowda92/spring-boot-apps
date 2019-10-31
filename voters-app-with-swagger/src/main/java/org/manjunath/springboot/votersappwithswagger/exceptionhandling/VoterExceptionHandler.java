@@ -64,4 +64,24 @@ public class VoterExceptionHandler extends ResponseEntityExceptionHandler {
 
 		return new ResponseEntity<ErrorResponse>(response, HttpStatus.BAD_REQUEST);
 	}
+
+	/**
+	 * Method handleErrorResponse(..) is an overloaded method. It handles the
+	 * Exceptions of type NullPointerException.class. This for handling the
+	 * NullPointer Exceptions
+	 * 
+	 * @param exception
+	 *            Exception of type NullPointerException
+	 * @param request
+	 *            WebRequest
+	 * @return ResponseEntity for ErrorResponse
+	 */
+	@ExceptionHandler(value = NullPointerException.class)
+	public ResponseEntity<ErrorResponse> handleErrorResponse(NullPointerException exception, WebRequest request) {
+		ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST.value(),
+				CustomErrorCodes.VOTER_NULL_EXCEPTION_CODE, CustomErrorCodes.VOTER_NULL_EXCEPTION_MSG,
+				exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, request.getDescription(false), LocalDateTime.now());
+
+		return new ResponseEntity<ErrorResponse>(response, HttpStatus.BAD_REQUEST);
+	}
 }

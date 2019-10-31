@@ -2,7 +2,6 @@ package org.manjunath.springboot.votersappwithswagger.controller;
 
 import java.util.List;
 
-import org.manjunath.springboot.votersappwithswagger.exceptionhandling.VoterNotFoundException;
 import org.manjunath.springboot.votersappwithswagger.model.Voter;
 import org.manjunath.springboot.votersappwithswagger.service.VoterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +19,15 @@ public class VoterController {
 	
 	@GetMapping("/voters")
 	public List<Voter> getAllVoters() {
-		throw new VoterNotFoundException("Voters Not Found");
+		return service.getAllVoters();
 	}
 	
 	@GetMapping("/voters/{id}")
 	public Voter getVoterById(@PathVariable int id) {
-		return null;
+		return service.getVoterById(id);
 	}
 	
-	@GetMapping("/voters/{voterId}")
+	@GetMapping("/voters/voter/{voterId}")
 	public Voter getVoterByVoterId(@PathVariable String voterId) {
 		return null;
 	}
