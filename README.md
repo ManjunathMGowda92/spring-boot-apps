@@ -3,5 +3,5 @@ Repository for the Spring boot applications
 
 
 
-<b style='color:red'> voters-app-with-swagger </b>
-A Spring boot application to demonstrate the swagger basic implementation.
+<h3 style='color:red'> voters-app-with-swagger </h3>
+<p>A Spring boot application to demonstrate the swagger basic implementation.<p>
