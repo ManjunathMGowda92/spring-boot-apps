@@ -7,16 +7,14 @@ Repository for the Spring boot applications
 <hr>
 
 <p>
-	<pre>A Spring boot application to demonstrate the swagger basic implementation. This Application is having following components and details.
+	<pre>A Spring boot application to demonstrate the swagger basic implementation. This Application is having following components and details.</pre>
 	
 	<ul>
-		<li>Controller</li>
-		<li>Service</li>
-		<li>DAO / Repository </li>
-		<li>Models</li>
-		<li>Swagger</li>
+			<li>Controller</li>
+			<li>Service</li>
+			<li>DAO / Repository </li>
+			<li>Models</li>
+			<li>Swagger</li>
 	</ul>
-		
-	</pre>
 <p>
 <hr>
