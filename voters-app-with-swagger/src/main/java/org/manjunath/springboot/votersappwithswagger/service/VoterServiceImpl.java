@@ -1,21 +1,34 @@
 package org.manjunath.springboot.votersappwithswagger.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
+import org.manjunath.springboot.votersappwithswagger.dao.VoterDAO;
+import org.manjunath.springboot.votersappwithswagger.exceptionhandling.VoterNotFoundException;
 import org.manjunath.springboot.votersappwithswagger.model.Voter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class VoterServiceImpl implements VoterService {
+	
+	@Autowired
+	private VoterDAO dao;
 
 	@Override
 	public List<Voter> getAllVoters() {
-		return null;
+		return dao.findAll();
 	}
 
 	@Override
 	public Voter getVoterById(int id) {
-		return null;
+		Voter voter = null;
+		try {
+			voter = dao.findById(id).get();
+		} catch (NoSuchElementException e) {
+			throw new VoterNotFoundException("Voter not found for the requested Id: "+id);
+		}
+		return voter;
 	}
 
 	@Override

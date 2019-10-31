@@ -7,4 +7,7 @@ public interface CustomErrorCodes {
 	
 	public static final String VOTER_GENERIC_EXCEPTION_CODE = "VOTER_010";
 	public static final String VOTER_GENERIC_EXCEPTION_MSG = "An Exception Occurred. Please Contact Administrator";
+	
+	public static final String VOTER_NULL_EXCEPTION_CODE = "VOTER_011";
+	public static final String VOTER_NULL_EXCEPTION_MSG = "NullPointerException Occurred.";
 }
