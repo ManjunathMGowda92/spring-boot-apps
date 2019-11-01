@@ -2,6 +2,7 @@ package org.manjunath.springboot.votersappwithswagger.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
@@ -11,14 +12,31 @@ public class VoterAddress implements Serializable{
 	 */
 	private static final long serialVersionUID = -2898516526068101941L;
 	
+	@Column(name = "DOOR_NUMBER")
 	private String doorNo;
+	
+	@Column(name = "STREET")
 	private String street;
+	
+	@Column(name = "LOCALITY")
 	private String locality;
+	
+	@Column(name = "POST")
 	private String post;
+	
+	@Column(name = "TALUK")
 	private String taluk;
+	
+	@Column(name = "DISTRICT")
 	private String district;
+	
+	@Column(name = "STATE")
 	private String state;
+	
+	@Column(name = "COUNTRY")
 	private String country;
+	
+	@Column(name = "PINCODE")
 	private String pinCode;
 	
 	public VoterAddress() {}
