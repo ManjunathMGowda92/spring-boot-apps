@@ -37,6 +37,9 @@ public class Voter implements Serializable {
 	@Column(name = "HUSBANDNAME")
 	private String husbandName;
 	
+	@Column(name = "GENDER")
+	private String gender;
+	
 	@Column(name = "DATE_OF_BIRTH")
 	private String dob;
 	
@@ -45,7 +48,7 @@ public class Voter implements Serializable {
 	public Voter() {}
 
 	public Voter(int id, String voterId, String firstName, String lastName, String fatherName, String husbandName,
-			String dob, VoterAddress address) {
+			String dob, String gender, VoterAddress address) {
 		this.id = id;
 		this.voterId = voterId;
 		this.firstName = firstName;
@@ -54,6 +57,7 @@ public class Voter implements Serializable {
 		this.husbandName = husbandName;
 		this.dob = dob;
 		this.address = address;
+		this.gender = gender;
 	}
 
 	public int getId() {
@@ -118,5 +122,13 @@ public class Voter implements Serializable {
 
 	public void setAddress(VoterAddress address) {
 		this.address = address;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 }
