@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,12 +26,12 @@ public class VoterController {
 	}
 	
 	@GetMapping("/voters/{id}")
-	public Voter getVoterById(@PathVariable int id) {
+	public Voter getVoterById(@PathVariable("id") int id) {
 		return service.getVoterById(id);
 	}
 	
 	@GetMapping("/voters/voter/{voterId}")
-	public Voter getVoterByVoterId(@PathVariable String voterId) {
+	public Voter getVoterByVoterId(@PathVariable("voterId") String voterId) {
 		return null;
 	}
 	
@@ -38,5 +39,10 @@ public class VoterController {
 	public Voter addVoter(@RequestBody Voter voter) {
 		voter.setId(0);
 		return service.addVoter(voter);
+	}
+	
+	@PutMapping("/voters/{id}")
+	public Voter updateVoter(@RequestBody Voter voter, @PathVariable("id") int id) {
+		return service.updateVoter(voter);
 	}
 }
