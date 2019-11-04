@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class VoterServiceImpl implements VoterService {
-	
+
 	@Autowired
 	private VoterDAO dao;
 
@@ -26,7 +26,7 @@ public class VoterServiceImpl implements VoterService {
 		try {
 			voter = dao.findById(id).get();
 		} catch (NoSuchElementException e) {
-			throw new VoterNotFoundException("Voter not found for the requested Id: "+id);
+			throw new VoterNotFoundException("Voter not found for the requested Id: " + id);
 		}
 		return voter;
 	}
@@ -47,13 +47,22 @@ public class VoterServiceImpl implements VoterService {
 	}
 
 	@Override
-	public void deleteVoterById(int id) {
-		
+	public Voter deleteVoterById(int id) {
+		Voter voter = null;
+		try {
+			voter = dao.findById(id).get();
+
+			dao.deleteById(id);
+		} catch (NoSuchElementException e) {
+			throw new VoterNotFoundException("Voter not found to delete :" + id);
+		}
+
+		return voter;
 	}
 
 	@Override
 	public void deleteVoterById(String voterId) {
-		
+
 	}
 
 }
