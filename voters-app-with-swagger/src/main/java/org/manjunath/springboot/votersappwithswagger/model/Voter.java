@@ -1,6 +1,7 @@
 package org.manjunath.springboot.votersappwithswagger.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,10 +9,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
-@Table(name ="voter", uniqueConstraints = {@UniqueConstraint(columnNames = {"VOTERID"})})
+@Table(name ="VOTERS", uniqueConstraints = {@UniqueConstraint(columnNames = {"VOTERID"})})
 public class Voter implements Serializable {
 	/**
 	 * 
@@ -19,7 +25,8 @@ public class Voter implements Serializable {
 	private static final long serialVersionUID = 3184932883727729011L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
 	private int id;
 	
 	@Column(name = "VOTERID")
@@ -44,6 +51,15 @@ public class Voter implements Serializable {
 	private String dob;
 	
 	private VoterAddress address;
+	
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "CREATED_DATE", updatable = false)
+	private Date createTimeStamp;
+	
+	@UpdateTimestamp
+	@Column(name = "UPDATED_DATE")
+	private Date updateTimeStamp;
 	
 	public Voter() {}
 
