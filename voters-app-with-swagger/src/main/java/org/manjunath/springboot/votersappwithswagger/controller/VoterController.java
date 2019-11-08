@@ -69,6 +69,13 @@ public class VoterController {
 		return service.getVoterById(id);
 	}
 
+	@ApiOperation(value = "Get a Voter from the application database based on the voter id", produces = "application/json", response = Voter.class, httpMethod = "GET", notes = "REST Controller end point to fetch the Voter based on the voter id")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Successfully retrieves the voter based on the id"),
+			@ApiResponse(code = 401, message = "You are not authorized to access the resource"),
+			@ApiResponse(code = 403, message = "Resource Access is forbidden"),
+			@ApiResponse(code = 404, message = "Voter not found for the specified id")
+	})
 	@GetMapping("/voters/voter/{voterId}")
 	public Voter getVoterByVoterId(@PathVariable("voterId") String voterId) {
 		return null;
