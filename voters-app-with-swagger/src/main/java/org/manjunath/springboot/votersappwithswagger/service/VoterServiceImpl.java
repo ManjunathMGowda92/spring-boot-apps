@@ -38,6 +38,7 @@ public class VoterServiceImpl implements VoterService {
 
 	@Override
 	public Voter addVoter(Voter voter) {
+		voter.setId(0);
 		return dao.save(voter);
 	}
 
