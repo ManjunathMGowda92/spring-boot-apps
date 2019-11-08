@@ -71,7 +71,7 @@ public class VoterController {
 
 	@ApiOperation(value = "Get a Voter from the application database based on the voter id", produces = "application/json", response = Voter.class, httpMethod = "GET", notes = "REST Controller end point to fetch the Voter based on the voter id")
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Successfully retrieves the voter based on the id"),
+			@ApiResponse(code = 200, message = "Successfully retrieves the voter based on the voter id"),
 			@ApiResponse(code = 401, message = "You are not authorized to access the resource"),
 			@ApiResponse(code = 403, message = "Resource Access is forbidden"),
 			@ApiResponse(code = 404, message = "Voter not found for the specified id")
@@ -81,9 +81,17 @@ public class VoterController {
 		return null;
 	}
 
+	@ApiOperation(value = "Insert a Voter into the application database", consumes = "application/json", produces = "application/json", response = Voter.class, httpMethod = "POST", notes = "REST Controller end point to create a Voter into application")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Successfully inserts the Voter into the application database"),
+			@ApiResponse(code = 201, message = "Successfull creation of the resource"),
+			@ApiResponse(code = 401, message = "Not Authorized to insert the Voter into application"),
+			@ApiResponse(code = 403, message = "Forbidden Access to insert into resource"),
+			@ApiResponse(code = 404, message = "Not found the resource"),
+			@ApiResponse(code = 500, message = "Internal Server Error. Not able to process the request")
+	})
 	@PostMapping("/voters")
 	public Voter addVoter(@RequestBody Voter voter) {
-		voter.setId(0);
 		return service.addVoter(voter);
 	}
 
