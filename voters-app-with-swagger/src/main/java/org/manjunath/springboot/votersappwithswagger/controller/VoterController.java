@@ -45,16 +45,25 @@ public class VoterController {
 	@Autowired
 	private VoterService service;
 
-	@ApiOperation(value = "View a list of available Voters", consumes = "application/json", produces = "application/json", response = List.class, httpMethod = "GET", notes = "Rest Controller end point to fetch all the voters present in the database")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved list"),
+	@ApiOperation(value = "Get a list of available Voters", consumes = "application/json", produces = "application/json", response = List.class, httpMethod = "GET", notes = "REST Controller end point to fetch all the voters present in the database")
+	@ApiResponses(value = { 
+			@ApiResponse(code = 200, message = "Successfully retrieved list"),
 			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
 			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
+			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") 
+	})
 	@GetMapping("/voters")
 	public List<Voter> getAllVoters() {
 		return service.getAllVoters();
 	}
 
+	@ApiOperation(value = "Get a Voter from the application database based on the id(primary key)", produces = "application/json", response = Voter.class, httpMethod = "GET", notes = "REST Controller end point to fetch the Voter based on the id(primary key)")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Successfully retrieves the voter based on the id"),
+			@ApiResponse(code = 401, message = "You are not authorized to access the resource"),
+			@ApiResponse(code = 403, message = "Resource Access is forbidden"),
+			@ApiResponse(code = 404, message = "Voter not found for the specified id")
+	})
 	@GetMapping("/voters/{id}")
 	public Voter getVoterById(@PathVariable("id") int id) {
 		return service.getVoterById(id);
