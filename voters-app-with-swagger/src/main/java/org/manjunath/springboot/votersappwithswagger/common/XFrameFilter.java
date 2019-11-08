@@ -1,4 +1,4 @@
-package org.manjunath.springboot.votersappwithswagger.controller;
+package org.manjunath.springboot.votersappwithswagger.common;
 
 import java.io.IOException;
 
