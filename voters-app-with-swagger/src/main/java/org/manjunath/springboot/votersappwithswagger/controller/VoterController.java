@@ -94,12 +94,29 @@ public class VoterController {
 	public Voter addVoter(@RequestBody Voter voter) {
 		return service.addVoter(voter);
 	}
-
+	
+	@ApiOperation(value = "Update a Voter into the application database", consumes = "application/json", produces = "application/json", response = Voter.class, httpMethod = "PUT", notes = "REST Controller end point to update a Voter into application")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Successfully updates the Voter into the application database"),
+			@ApiResponse(code = 201, message = "Successfull updation of the resource"),
+			@ApiResponse(code = 401, message = "Not Authorized to update the Voter into application"),
+			@ApiResponse(code = 403, message = "Forbidden Access to update into resource"),
+			@ApiResponse(code = 404, message = "Not found the resource"),
+			@ApiResponse(code = 500, message = "Internal Server Error. Not able to process the request")
+	})
 	@PutMapping("/voters/{id}")
 	public Voter updateVoter(@RequestBody Voter voter, @PathVariable("id") int id) {
 		return service.updateVoter(voter);
 	}
 
+	@ApiOperation(value = "Delete a Voter from the application database", produces = "application/json", response = Voter.class, httpMethod = "DELETE", notes = "REST Controller end point to delete a Voter from application")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Successfully deletes the Voter from the application database"),
+			@ApiResponse(code = 401, message = "Not Authorized to delete the Voter from application"),
+			@ApiResponse(code = 403, message = "Forbidden Access to delete the resource"),
+			@ApiResponse(code = 404, message = "Resource not found to delete"),
+			@ApiResponse(code = 500, message = "Internal Server Error. Not able to process the request")
+	})
 	@DeleteMapping("/voters/{id}")
 	public Voter deleteVoterById(@PathVariable("id") int id) {
 		return service.deleteVoterById(id);
