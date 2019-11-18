@@ -33,7 +33,14 @@ public class VoterServiceImpl implements VoterService {
 
 	@Override
 	public Voter getVoterById(String voterId) {
-		return null;
+		Voter voter = null;
+
+		voter = dao.findVoterByVoterId(voterId);
+
+		if (voter == null)
+			throw new VoterNotFoundException("Voter not found for the requested voter id: " + voterId);
+
+		return voter;
 	}
 
 	@Override
