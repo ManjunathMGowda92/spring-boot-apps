@@ -69,8 +69,8 @@ public class VoterServiceImpl implements VoterService {
 	}
 
 	@Override
-	public void deleteVoterById(String voterId) {
-
+	public void deleteVoterById(String id) {
+		dao.deleteVoterByVoterId(id);
 	}
 
 }

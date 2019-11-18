@@ -12,6 +12,6 @@ public interface VoterService {
 	public Voter addVoter(Voter voter);
 	public Voter updateVoter(Voter voter);
 	public Voter deleteVoterById(int id);
-	public void deleteVoterById(String voterId);
+	public void deleteVoterById(String id);
 	
 }
