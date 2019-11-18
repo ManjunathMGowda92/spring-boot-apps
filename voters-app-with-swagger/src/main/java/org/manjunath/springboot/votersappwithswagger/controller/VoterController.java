@@ -78,7 +78,7 @@ public class VoterController {
 	})
 	@GetMapping("/voters/voter/{voterId}")
 	public Voter getVoterByVoterId(@PathVariable("voterId") String voterId) {
-		return null;
+		return service.getVoterById(voterId);
 	}
 
 	@ApiOperation(value = "Insert a Voter into the application database", consumes = "application/json", produces = "application/json", response = Voter.class, httpMethod = "POST", notes = "REST Controller end point to create a Voter into application")
