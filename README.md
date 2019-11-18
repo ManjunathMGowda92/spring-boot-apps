@@ -8,5 +8,5 @@ Repository for the Spring boot applications
 <h2>Application Module Details </h2>
 
 <ul>
-  <li>voters-app-with-swagger</li>
+  <li><h3>voters-app-with-swagger</h3></li>
 </ul>
