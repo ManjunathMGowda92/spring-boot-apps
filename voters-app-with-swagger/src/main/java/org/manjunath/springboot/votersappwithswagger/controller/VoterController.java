@@ -121,4 +121,18 @@ public class VoterController {
 	public Voter deleteVoterById(@PathVariable("id") int id) {
 		return service.deleteVoterById(id);
 	}
+	
+	
+	@ApiOperation(value = "Delete a Voter from the application database", produces = "application/json", response = Voter.class, httpMethod = "DELETE", notes = "REST Controller end point to delete a Voter from application")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Successfully deletes the Voter from the application database"),
+			@ApiResponse(code = 401, message = "Not Authorized to delete the Voter from application"),
+			@ApiResponse(code = 403, message = "Forbidden Access to delete the resource"),
+			@ApiResponse(code = 404, message = "Resource not found to delete"),
+			@ApiResponse(code = 500, message = "Internal Server Error. Not able to process the request")
+	})
+	@DeleteMapping("/voters/voter/{id}")
+	public void deleteVoterByVoterId(@PathVariable("id") String id) {
+		service.deleteVoterById(id);
+	}
 }
