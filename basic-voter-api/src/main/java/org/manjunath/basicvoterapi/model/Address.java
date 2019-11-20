@@ -2,6 +2,8 @@ package org.manjunath.basicvoterapi.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+
 
 public class Address implements Serializable{
 
@@ -10,14 +12,31 @@ public class Address implements Serializable{
 	 */
 	private static final long serialVersionUID = 2228645571258973680L;
 	
+	@Column(name = "DOOR_NO")
 	private String doorNo;
+	
+	@Column(name = "STREET")
 	private String street;
+	
+	@Column(name = "LOCALITY")
 	private String locality;
+	
+	@Column(name = "POST")
 	private String post;
+	
+	@Column(name = "TALUK")
 	private String taluk;
+	
+	@Column(name = "DISTRICT")
 	private String district;
+	
+	@Column(name = "STATE")
 	private String state;
+	
+	@Column(name = "COUNTRY")
 	private String country;
+	
+	@Column(name = "ZIP_CODE")
 	private String zipCode;
 	
 	public Address() {}
