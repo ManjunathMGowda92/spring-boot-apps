@@ -16,7 +16,7 @@ public class Voter implements Serializable{
 	private static final long serialVersionUID = -4141620722337521072L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private int id;
 	
