@@ -10,5 +10,5 @@ Repository for the Spring boot applications
 Spring Boot Application to demonstrate the api's with CRUD Operations.
 
 * ### voters-app-with-swagger
-Spring Boot Application to demonstarte the CRUD application with Swagger implementation.
+Spring Boot Application to demonstarte the CRUD operations with Swagger implementation.
 
