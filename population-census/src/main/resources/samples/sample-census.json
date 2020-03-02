@@ -1,0 +1,64 @@
+{
+	"person_id" : "",
+	"first_name" : "",
+	"last_name" : "",
+	"middle_name" : "",
+	"DOB": "",
+	"mail_id": "",
+	"primary_contact_Number" : "",
+	"secondary_contact_number" : "",
+	"gender":"",
+	"literate" : "",
+	"marital_status" : "",
+	"name_of_father" : "",
+	"name_of_husband" : "",
+	"number_of_dependants" : "",
+	"photograph" : "",
+	"religion":"",
+	"hobbies" : [
+		{
+			"name_of_hobby" : "",
+			"proficiency" : "biginner/expert/intermediate"
+		}
+	],
+	"address" : {
+		"door_no" : "",
+		"street" : "",
+		"locality" : "",
+		"post" : "",
+		"taluk" : "",
+		"district" : "",
+		"state" : "",
+		"country" : "",
+		"pincode" : ""
+	},
+	"occupation" : {
+		"name_of_occupation" : "",
+		"is_full_time" : "",
+		"exp_in_years" : ""
+	},
+	"education" : {
+		"level_of_education" : "below_higher_primary/below_SSLC/SSLC/intermediate/Graduation/Post-Graduation",
+		"status_of_eduaction" : "discontinued/on-going/completed",
+		"highest_education" : "",
+		"education_level_details" : {
+			"name_of_institute" : "",
+			"highest_education_in_institute" : "",
+			"start_year" : "",
+			"end_year" : "",
+			"is_course_completed" : ""
+		}
+	},
+	"health_details" : {
+		"is_health_insurance_available" : "",
+		"is_suffering_from_any_disease" : "",
+		"suffering_diseases_list" : []
+	},
+	"dependants_list" : [
+		{
+			"dependent_id" : "",
+			"person_id" : "",
+			"relationship_with_dependant" : "FATHER/MOTHER/BROTHER/SISTER/WIFE/SON/DAUGHTER"
+		}
+	]
+}
