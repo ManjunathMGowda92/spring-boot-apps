@@ -4,11 +4,14 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -90,6 +93,12 @@ public class Person implements Serializable{
 	@JsonProperty("religion")
 	@Column(name = "religion", nullable = true, columnDefinition = "VARCHAR(255) default NULL")
 	private String religion;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "person_address_id")
+	@JsonProperty("person_address")
+	private Address address;
+	
 		
 	@CreationTimestamp
 	@Column(name = "created_date", nullable = false, updatable = false)
