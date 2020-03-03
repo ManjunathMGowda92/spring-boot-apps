@@ -93,6 +93,7 @@ public class Address implements Serializable {
 	 * care by the "address" field in the Person column. So it avoids multiple table
 	 * creation for mapping the PERSON and ADDRESS tables
 	 */
+
 	@OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
 	private Person person;
 
@@ -191,14 +192,6 @@ public class Address implements Serializable {
 
 	public void setPincode(String pincode) {
 		this.pincode = pincode;
-	}
-
-	public Person getPerson() {
-		return person;
-	}
-
-	public void setPerson(Person person) {
-		this.person = person;
 	}
 
 	public LocalDateTime getCreateDateTime() {
