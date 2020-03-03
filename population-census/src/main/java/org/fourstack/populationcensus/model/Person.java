@@ -2,10 +2,25 @@ package org.fourstack.populationcensus.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
+import java.time.LocalDateTime;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@Entity
+@Table(name = "person", uniqueConstraints = {@UniqueConstraint(columnNames = {"person_id"})})
 public class Person implements Serializable{
 
 	/**
@@ -13,67 +28,77 @@ public class Person implements Serializable{
 	 */
 	private static final long serialVersionUID = 7847409898191106723L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private long id;
 	
 	@JsonProperty("person_id")
+	@Column(name = "person_id", nullable = false)
 	private String personId;
 	
 	@JsonProperty("first_name")
+	@Column(name = "first_name", nullable = false)
 	private String firstName;
 	
 	@JsonProperty("middle_name")
+	@Column(name = "middle_name", nullable = true)
 	private String middleName;
 	
 	@JsonProperty("last_name")
+	@Column(name = "last_name", nullable = true)
 	private String lastName;
 	
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(pattern = "yyyy/MM/dd")
 	@JsonProperty("birth_date")
+	@Column(name = "date_of_birth", nullable = false)
 	private LocalDate dateOfBirth;
 	
 	@JsonProperty("mail_id")
+	@Column(name = "email_id", unique = true, nullable = false)
 	private String mailId;
 	
 	@JsonProperty("contact_num_primary")
+	@Column(name = "prim_contact_no", nullable = true)
 	private String primaryContactNo;
 	
 	@JsonProperty("contact_num_secondary")
+	@Column(name = "sec_contact_no", nullable = true)
 	private String secondaryContactNo;
 	
 	@JsonProperty("gender")
+	@Column(name = "gender", nullable = false)
 	private String gender;
 	
 	@JsonProperty("is_literate")
+	@Column(name = "is_literate", nullable = false, columnDefinition = "boolean default FALSE")
 	private boolean isLiterate;
 	
 	@JsonProperty("marital_status")
+	@Column(name = "is_married", nullable = false, columnDefinition = "boolean default FALSE")
 	private boolean maritalStatus;
 	
 	@JsonProperty("father_name")
+	@Column(name = "father_name", nullable = true, columnDefinition = "VARCHAR(255) default NULL")
 	private String fatherName;
 	
 	@JsonProperty("husband_name")
-	private String husbandName;
+	@Column(name = "husband_name", nullable = true, columnDefinition = "VARCHAR(255) default NULL")
+	private String husbandName;	
 	
 	@JsonProperty("religion")
+	@Column(name = "religion", nullable = true, columnDefinition = "VARCHAR(255) default NULL")
 	private String religion;
+		
+	@CreationTimestamp
+	@Column(name = "created_date", nullable = false, updatable = false)
+	private LocalDateTime createDateTime;
+		
+	@UpdateTimestamp
+	@Column(name = "updated_date", nullable = false)
+	private LocalDateTime updateDateTime;
 	
-	@JsonProperty("hobbies")
-	private List<Hobby> hobbies;
-	
-	@JsonProperty("person_address")
-	private Address address;
-	
-	@JsonProperty("occupational_details")
-	private List<OccupationDetails> occupationDetails;
-	
-	@JsonProperty("education_details")
-	private List<EducationDetails> educationDetails;
-	
-	@JsonProperty("health_details")
-	private HealthDetails healthDetails;
-	
-	@JsonProperty("dependants_list")
-	private List<DependantPersonDetail> dependantsList;
 	
 	public Person() {
 	}
@@ -198,51 +223,25 @@ public class Person implements Serializable{
 		this.religion = religion;
 	}
 
-	public List<Hobby> getHobbies() {
-		return hobbies;
+	
+	
+	
+	
+	
+	
+	public LocalDateTime getCreateDateTime() {
+		return createDateTime;
 	}
 
-	public void setHobbies(List<Hobby> hobbies) {
-		this.hobbies = hobbies;
+	public void setCreateDateTime(LocalDateTime createDateTime) {
+		this.createDateTime = createDateTime;
 	}
 
-	public Address getAddress() {
-		return address;
+	public LocalDateTime getUpdateDateTime() {
+		return updateDateTime;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
-	public List<OccupationDetails> getOccupationDetails() {
-		return occupationDetails;
-	}
-
-	public void setOccupationDetails(List<OccupationDetails> occupationDetails) {
-		this.occupationDetails = occupationDetails;
-	}
-
-	public List<EducationDetails> getEducationDetails() {
-		return educationDetails;
-	}
-
-	public void setEducationDetails(List<EducationDetails> educationDetails) {
-		this.educationDetails = educationDetails;
-	}
-
-	public HealthDetails getHealthDetails() {
-		return healthDetails;
-	}
-
-	public void setHealthDetails(HealthDetails healthDetails) {
-		this.healthDetails = healthDetails;
-	}
-
-	public List<DependantPersonDetail> getDependantsList() {
-		return dependantsList;
-	}
-
-	public void setDependantsList(List<DependantPersonDetail> dependantsList) {
-		this.dependantsList = dependantsList;
+	public void setUpdateDateTime(LocalDateTime updateDateTime) {
+		this.updateDateTime = updateDateTime;
 	}
 }
