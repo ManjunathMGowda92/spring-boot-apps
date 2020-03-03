@@ -2,6 +2,8 @@ package org.fourstack.populationcensus.model;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class CensusApplicationModel implements Serializable{
 	
 	/**
@@ -9,8 +11,13 @@ public class CensusApplicationModel implements Serializable{
 	 */
 	private static final long serialVersionUID = 1533015418546135279L;
 	
+	@JsonProperty(value = "application_name")
 	private String applicationName;
+	
+	@JsonProperty(value = "application_version")
 	private String applicationVersion;
+	
+	@JsonProperty(value = "application_description")
 	private String applicationDescription;
 	
 	public CensusApplicationModel() {}
