@@ -84,7 +84,7 @@ public class Address implements Serializable {
 	private LocalDateTime createDateTime;
 
 	@UpdateTimestamp
-	@Column(name = "update_date", nullable = false)
+	@Column(name = "updated_date", nullable = false)
 	private LocalDateTime updateDateTime;
 
 	/*
@@ -93,7 +93,6 @@ public class Address implements Serializable {
 	 * care by the "address" field in the Person column. So it avoids multiple table
 	 * creation for mapping the PERSON and ADDRESS tables
 	 */
-
 	@OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
 	private Person person;
 
