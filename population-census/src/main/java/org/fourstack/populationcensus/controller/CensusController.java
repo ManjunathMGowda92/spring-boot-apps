@@ -25,6 +25,11 @@ public class CensusController {
 		return service.getAllPersons();
 	}
 	
+	@GetMapping("/persons/{id}")
+	public Person getPersonById(@PathVariable("id") long id) {
+		return service.getPersonById(id);
+	}
+		
 	@PostMapping("/persons")
 	public void savePerson(@RequestBody Person person) {
 		service.addPerson(person);
