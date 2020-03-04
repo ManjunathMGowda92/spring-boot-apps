@@ -121,6 +121,11 @@ public class Person implements Serializable{
 	@JsonProperty("education")
 	private EducationDetails educationDetails;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "health_details_id")
+	@JsonProperty("health_details")
+	private HealthDetails healthDetails;
+	
 	@CreationTimestamp
 	@Column(name = "created_date", nullable = false, updatable = false)
 	private LocalDateTime createDateTime;
@@ -251,27 +256,5 @@ public class Person implements Serializable{
 
 	public void setReligion(String religion) {
 		this.religion = religion;
-	}
-
-	
-	
-	
-	
-	
-	
-	public LocalDateTime getCreateDateTime() {
-		return createDateTime;
-	}
-
-	public void setCreateDateTime(LocalDateTime createDateTime) {
-		this.createDateTime = createDateTime;
-	}
-
-	public LocalDateTime getUpdateDateTime() {
-		return updateDateTime;
-	}
-
-	public void setUpdateDateTime(LocalDateTime updateDateTime) {
-		this.updateDateTime = updateDateTime;
 	}
 }
