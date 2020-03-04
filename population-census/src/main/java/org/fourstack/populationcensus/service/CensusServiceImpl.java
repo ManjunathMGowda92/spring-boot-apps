@@ -29,6 +29,11 @@ public class CensusServiceImpl implements CensusService {
 	public void updatePerson(Person person) {
 		dao.save(person);
 	}
+
+	@Override
+	public Person getPersonById(long id) {
+		return dao.findById(id).get();
+	}
 	
 	
 
