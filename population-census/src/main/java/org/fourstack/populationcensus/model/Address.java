@@ -192,20 +192,4 @@ public class Address implements Serializable {
 	public void setPincode(String pincode) {
 		this.pincode = pincode;
 	}
-
-	public LocalDateTime getCreateDateTime() {
-		return createDateTime;
-	}
-
-	public void setCreateDateTime(LocalDateTime createDateTime) {
-		this.createDateTime = createDateTime;
-	}
-
-	public LocalDateTime getUpdateDateTime() {
-		return updateDateTime;
-	}
-
-	public void setUpdateDateTime(LocalDateTime updateDateTime) {
-		this.updateDateTime = updateDateTime;
-	}
 }
