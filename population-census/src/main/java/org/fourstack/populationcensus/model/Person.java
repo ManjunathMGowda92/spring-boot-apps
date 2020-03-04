@@ -3,6 +3,7 @@ package org.fourstack.populationcensus.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -99,7 +101,17 @@ public class Person implements Serializable{
 	@JsonProperty("person_address")
 	private Address address;
 	
-		
+	/*
+	 * @JoinColumn(name = "person_id") indicates the Column name in Hobby table. If
+	 * we are not using the @joinColumn, then a separate table will be created to
+	 * map both HOBBIES and PERSON
+	 */
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "person_id")
+	@JsonProperty("hobbies")
+	private List<Hobby> hobbies;
+	
+			
 	@CreationTimestamp
 	@Column(name = "created_date", nullable = false, updatable = false)
 	private LocalDateTime createDateTime;
