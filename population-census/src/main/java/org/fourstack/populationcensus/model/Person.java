@@ -111,7 +111,11 @@ public class Person implements Serializable{
 	@JsonProperty("hobbies")
 	private List<Hobby> hobbies;
 	
-			
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "occupation_id")
+	@JsonProperty("occupation")
+	private OccupationDetails occupation;
+	
 	@CreationTimestamp
 	@Column(name = "created_date", nullable = false, updatable = false)
 	private LocalDateTime createDateTime;
