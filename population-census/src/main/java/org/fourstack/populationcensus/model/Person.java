@@ -116,6 +116,11 @@ public class Person implements Serializable{
 	@JsonProperty("occupation")
 	private OccupationDetails occupation;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name ="education_details_id")
+	@JsonProperty("education")
+	private EducationDetails educationDetails;
+	
 	@CreationTimestamp
 	@Column(name = "created_date", nullable = false, updatable = false)
 	private LocalDateTime createDateTime;
