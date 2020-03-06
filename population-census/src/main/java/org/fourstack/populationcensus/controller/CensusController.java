@@ -5,6 +5,8 @@ import java.util.List;
 import org.fourstack.populationcensus.model.Person;
 import org.fourstack.populationcensus.service.CensusService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,22 +23,22 @@ public class CensusController {
 	private CensusService service;
 
 	@GetMapping("/persons")
-	public List<Person> getAllPersons() {
-		return service.getAllPersons();
+	public ResponseEntity<List<Person>> getAllPersons() {		
+		return new ResponseEntity<List<Person>>(service.getAllPersons(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/persons/{id}")
-	public Person getPersonById(@PathVariable("id") long id) {
-		return service.getPersonById(id);
+	public ResponseEntity<Person> getPersonById(@PathVariable("id") long id) {
+		return new ResponseEntity<Person>(service.getPersonById(id), HttpStatus.OK);
 	}
 		
 	@PostMapping("/persons")
-	public void savePerson(@RequestBody Person person) {
-		service.addPerson(person);
+	public ResponseEntity<Person> savePerson(@RequestBody Person person) {
+		return new ResponseEntity<Person>(service.addPerson(person), HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/persons/{id}")
-	public void updatePerson(@RequestBody Person person, @PathVariable("id") long id) {
-		service.updatePerson(person);
+	public ResponseEntity<Person> updatePerson(@RequestBody Person person, @PathVariable("id") long id) {
+		return new ResponseEntity<Person>(service.updatePerson(person), HttpStatus.OK);
 	}
 }

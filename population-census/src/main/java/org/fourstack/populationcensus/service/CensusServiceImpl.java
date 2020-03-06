@@ -20,14 +20,14 @@ public class CensusServiceImpl implements CensusService {
 	}
 
 	@Override
-	public void addPerson(Person person) {
+	public Person addPerson(Person person) {
 		person.setId(0);
-		dao.save(person);
+		return dao.save(person);
 	}
 
 	@Override
-	public void updatePerson(Person person) {
-		dao.save(person);
+	public Person updatePerson(Person person) {
+		return dao.save(person);
 	}
 
 	@Override

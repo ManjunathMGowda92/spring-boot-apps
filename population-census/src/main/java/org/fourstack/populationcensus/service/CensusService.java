@@ -8,8 +8,8 @@ public interface CensusService {
 
 	public List<Person> getAllPersons();
 	public Person getPersonById(long id);
-	public void addPerson(Person person);
-	public void updatePerson(Person person);
+	public Person addPerson(Person person);
+	public Person updatePerson(Person person);
 	
 	
 }
