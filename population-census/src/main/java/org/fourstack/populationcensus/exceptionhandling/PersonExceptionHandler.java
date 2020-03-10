@@ -76,5 +76,27 @@ public class PersonExceptionHandler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<ErrorResponse>(response, HttpStatus.BAD_REQUEST);
 	}
 
-	
+	/**
+	 * Exception Handler Method to handle the Generic Exceptions.
+	 * 
+	 * @param exception Type of Exception is handled
+	 * @param request   WebRequest
+	 * @return ErrorResponse Entity
+	 */
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ErrorResponse> handleErrorResponse(Exception exception, WebRequest request) {
+		ErrorResponse response = new ErrorResponse();
+		response.setCustomErrorCode(CustomErrorCodes.CENSUS_GENERIC_ERROR.code());
+		response.setCustomErrorMsg(CustomErrorCodes.CENSUS_GENERIC_ERROR);
+		response.setCustomErrorDescription(CustomErrorCodes.CENSUS_GENERIC_ERROR.value());
+
+		response.setErrorCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
+		response.setErrorMsg(exception.getMessage());
+		response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+
+		response.setTimeStamp(LocalDateTime.now());
+		response.setUrlDetails(request.getDescription(false));
+
+		return new ResponseEntity<ErrorResponse>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 }
