@@ -23,6 +23,17 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class PersonExceptionHandler extends ResponseEntityExceptionHandler {
 
+	/**
+	 * Exception Handler method to handle the PersonNotFoundException.
+	 * <p>
+	 * When PersonNotFoundException occurs, error response will be generated and
+	 * send back to the requester
+	 * </p>
+	 * 
+	 * @param exception Type of Exception is handled
+	 * @param request   WebRequest
+	 * @return ErrorResponse Entity
+	 */
 	@ExceptionHandler(value = PersonNotFoundException.class)
 	public ResponseEntity<ErrorResponse> handleErrorResponse(PersonNotFoundException exception, WebRequest request) {
 		ErrorResponse response = new ErrorResponse();
@@ -40,6 +51,17 @@ public class PersonExceptionHandler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<ErrorResponse>(response, HttpStatus.NOT_FOUND);
 	}
 
+	/**
+	 * Exception Handler method to handle the PersonResultListNotFoundException
+	 * <p>
+	 * When PersonResultListNotFoundException occurs, error response will be
+	 * generated and send back to the requester
+	 * </p>
+	 * 
+	 * @param exception Type of Exception Handled
+	 * @param request   WebRequest
+	 * @return ErrorResponse Entity
+	 */
 	@ExceptionHandler(PersonResultListNotFoundException.class)
 	public ResponseEntity<ErrorResponse> handleErrorResponse(PersonResultListNotFoundException exception,
 			WebRequest request) {
@@ -58,6 +80,17 @@ public class PersonExceptionHandler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<ErrorResponse>(response, HttpStatus.NOT_FOUND);
 	}
 
+	/**
+	 * Exception handler method to handle DataIntegrityViolationException.
+	 * <p>
+	 * When DataIntegrityViolationException occurs, error response will be generated
+	 * and send back to the requester
+	 * </p>
+	 * 
+	 * @param exception Type of Exception need to be handled
+	 * @param request   WebRequest
+	 * @return ErrorResponse Entity
+	 */
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	public ResponseEntity<ErrorResponse> handleErrorResponse(DataIntegrityViolationException exception,
 			WebRequest request) {
