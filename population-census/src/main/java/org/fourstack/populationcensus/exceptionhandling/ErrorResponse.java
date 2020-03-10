@@ -18,10 +18,13 @@ public class ErrorResponse implements Serializable {
 	private String customErrorCode;
 	
 	@JsonProperty("custom_err_msg")
-	private String customErrorMsg;
+	private CustomErrorCodes customErrorMsg;
+	
+	@JsonProperty("custom_err_desc")
+	private String customErrorDescription;
 	
 	@JsonProperty("error_code")
-	private String errorCode;
+	private int errorCode;
 	
 	@JsonProperty("error_messgae")
 	private String errorMsg;
@@ -33,17 +36,17 @@ public class ErrorResponse implements Serializable {
 	private String urlDetails;
 	
 	@JsonProperty("timestamp")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
 	private LocalDateTime timeStamp;
 	
 	public ErrorResponse() {
 	}
 
-	public ErrorResponse(String customErrorCode, String customErrorMsg, String errorCode, String errorMsg,
-			HttpStatus status, String urlDetails, LocalDateTime timeStamp) {
-		super();
+	public ErrorResponse(String customErrorCode, CustomErrorCodes customErrorMsg, String customErrorDescription,
+			int errorCode, String errorMsg, HttpStatus status, String urlDetails, LocalDateTime timeStamp) {
 		this.customErrorCode = customErrorCode;
 		this.customErrorMsg = customErrorMsg;
+		this.customErrorDescription = customErrorDescription;
 		this.errorCode = errorCode;
 		this.errorMsg = errorMsg;
 		this.status = status;
@@ -59,19 +62,19 @@ public class ErrorResponse implements Serializable {
 		this.customErrorCode = customErrorCode;
 	}
 
-	public String getCustomErrorMsg() {
+	public CustomErrorCodes getCustomErrorMsg() {
 		return customErrorMsg;
 	}
 
-	public void setCustomErrorMsg(String customErrorMsg) {
+	public void setCustomErrorMsg(CustomErrorCodes customErrorMsg) {
 		this.customErrorMsg = customErrorMsg;
 	}
 
-	public String getErrorCode() {
+	public int getErrorCode() {
 		return errorCode;
 	}
 
-	public void setErrorCode(String errorCode) {
+	public void setErrorCode(int errorCode) {
 		this.errorCode = errorCode;
 	}
 
@@ -105,5 +108,13 @@ public class ErrorResponse implements Serializable {
 
 	public void setTimeStamp(LocalDateTime timeStamp) {
 		this.timeStamp = timeStamp;
+	}
+
+	public String getCustomErrorDescription() {
+		return customErrorDescription;
+	}
+
+	public void setCustomErrorDescription(String customErrorDescription) {
+		this.customErrorDescription = customErrorDescription;
 	}
 }
