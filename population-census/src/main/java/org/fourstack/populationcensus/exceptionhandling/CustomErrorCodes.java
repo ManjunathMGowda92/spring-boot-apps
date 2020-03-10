@@ -2,7 +2,8 @@ package org.fourstack.populationcensus.exceptionhandling;
 
 public enum CustomErrorCodes {
 
-	PERSON_NOT_FOUND("CENSUS_101", "Requested Person Details Not Found");
+	PERSON_NOT_FOUND("CENSUS_401", "Requested Person Details Not Found"),
+	PERSONS_LIST_NOT_FOUND("CENSUS_402", "Person List is Empty");
 
 	private final String custErrorCode;
 	private final String custErrorMsg;
@@ -12,11 +13,11 @@ public enum CustomErrorCodes {
 		this.custErrorMsg = custErrorMsg;
 	}
 
-	public String custErrorCode() {
+	public String code() {
 		return this.custErrorCode;
 	}
 
-	public String custErrorMsg() {
+	public String value() {
 		return this.custErrorMsg;
 	}
 
