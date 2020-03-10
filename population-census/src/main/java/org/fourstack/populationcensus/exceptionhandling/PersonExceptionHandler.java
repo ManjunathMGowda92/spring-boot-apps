@@ -2,6 +2,7 @@ package org.fourstack.populationcensus.exceptionhandling;
 
 import java.time.LocalDateTime;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -56,4 +57,24 @@ public class PersonExceptionHandler extends ResponseEntityExceptionHandler {
 
 		return new ResponseEntity<ErrorResponse>(response, HttpStatus.NOT_FOUND);
 	}
+
+	@ExceptionHandler(DataIntegrityViolationException.class)
+	public ResponseEntity<ErrorResponse> handleErrorResponse(DataIntegrityViolationException exception,
+			WebRequest request) {
+		ErrorResponse response = new ErrorResponse();
+		response.setCustomErrorCode(CustomErrorCodes.CONSTRAINT_VALIDATION_ERROR.code());
+		response.setCustomErrorMsg(CustomErrorCodes.CONSTRAINT_VALIDATION_ERROR);
+		response.setCustomErrorDescription(CustomErrorCodes.CONSTRAINT_VALIDATION_ERROR.value());
+
+		response.setErrorCode(HttpStatus.BAD_REQUEST.value());
+		response.setErrorMsg(exception.getMessage());
+		response.setStatus(HttpStatus.BAD_REQUEST);
+
+		response.setTimeStamp(LocalDateTime.now());
+		response.setUrlDetails(request.getDescription(false));
+
+		return new ResponseEntity<ErrorResponse>(response, HttpStatus.BAD_REQUEST);
+	}
+
+	
 }
